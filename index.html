@@ -1,6 +1,44 @@
 <html>
-  <head></head>
-  <body>
-    Art By Allegra
-  </body>
+<head>
+    <style>
+        div.scrollmenu {
+            background-color: #fff;
+            overflow: auto;
+            white-space: nowrap;
+        }
+        
+        img.scrollmenu {
+            padding-top: 10px;
+            padding-right: 10px;
+            padding-bottom: 10px;
+            padding-left: 10px;
+            height: 50;
+            width: 50;
+        }
+    </style>
+    <script>
+        function buildScrollableMenu() {
+            const imageArray = ["1.png", "2.png", "3.png", "4.png", "5.png", "6.png", "7.png", "8.png"];
+            var text = "";
+            for (let i = 0; i < imageArray.length; i++) {
+                text += "<img class=scrollmenu onclick=populateDisplayImage('" + imageArray[i] + "') src=images/" + imageArray[i] + " />";
+            }
+            document.getElementById("dynamicScrollMenu").innerHTML = text;
+        }
+        
+        function populateDisplayImage(imageName) {
+            var text="<img src=images/" + imageName + " />";
+            document.getElementById("displayImage").innerHTML = text;
+        }
+    </script>
+</head>
+<body onload="buildScrollableMenu()">
+
+    <div>Header</div>
+    
+    <div id="displayImage"><img src="images/1.png" /></div>
+    
+    <div class="scrollmenu" id="dynamicScrollMenu">default</div>
+</body>
+
 </html>
